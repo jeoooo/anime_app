@@ -1,3 +1,4 @@
+// lib/theme/app_theme.dart
 // ignore_for_file: prefer_const_constructors
 
 import 'package:anime_app/theme/app_fonts.dart';
@@ -54,6 +55,13 @@ class AppThemes {
       onError: Colors.white,
       onSurface: Colors.white,
     ).copyWith(surface: bgColor),
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent, // Set AppBar to transparent
+      elevation: 0, // No shadow
+      titleTextStyle: TextStyle(color: Colors.white), // Adjust title text color
+      iconTheme:
+          IconThemeData(color: Colors.white), // Adjust icon color if needed
+    ),
   );
 
   // Optional Light Theme
@@ -74,26 +82,36 @@ class AppThemes {
       disabledColor: disabledButtonColor,
     ),
     textTheme: TextTheme(
-      displayLarge: AppFonts.heading1(color: Colors.white), // Use Heading 1
-      displayMedium: AppFonts.heading2(color: Colors.white), // Use Heading 2
-      displaySmall: AppFonts.heading3(color: Colors.white), // Use Heading 3
-      headlineMedium: AppFonts.heading4(color: Colors.white), // Use Heading 4
-      headlineSmall: AppFonts.heading5(color: Colors.white), // Use Heading 5
-      titleLarge: AppFonts.heading6(color: Colors.white), // Use Heading 6
-      bodyLarge: AppFonts.bodyXLarge(color: Colors.white), // Use Body XLarge
-      bodyMedium: AppFonts.bodyLarge(color: Colors.white), // Use Body Large
-      bodySmall: AppFonts.bodyMedium(color: Colors.white), // Use Body Medium
-      labelSmall: AppFonts.bodySmall(color: Colors.white), // Use Body Small
+      displayLarge:
+          AppFonts.heading1(color: Colors.black), // Adjust for light theme
+      displayMedium: AppFonts.heading2(color: Colors.black),
+      displaySmall: AppFonts.heading3(color: Colors.black),
+      headlineMedium: AppFonts.heading4(color: Colors.black),
+      headlineSmall: AppFonts.heading5(color: Colors.black),
+      titleLarge: AppFonts.heading6(color: Colors.black),
+      bodyLarge: AppFonts.bodyXLarge(color: Colors.black),
+      bodyMedium: AppFonts.bodyLarge(color: Colors.black),
+      bodySmall: AppFonts.bodyMedium(color: Colors.black),
+      labelSmall: AppFonts.bodySmall(color: Colors.black),
     ),
     colorScheme: ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
       surface: Colors.white,
       error: errorColor,
-      onPrimary: Colors.white,
+      onPrimary: Colors.black,
       onSecondary: Colors.black,
       onError: Colors.white,
       onSurface: Colors.black,
     ).copyWith(surface: Colors.white),
+    appBarTheme: AppBarTheme(
+      backgroundColor:
+          Colors.transparent, // Set AppBar to transparent for light theme
+      elevation: 0,
+      titleTextStyle: TextStyle(
+          color: Colors.black), // Adjust title text color for light theme
+      iconTheme:
+          IconThemeData(color: Colors.black), // Adjust icon color if needed
+    ),
   );
 }
