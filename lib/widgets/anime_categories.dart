@@ -44,45 +44,51 @@ class AnimeCategories extends StatelessWidget {
           child: Row(
             children: [
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '1',
                 size: AnimeImageCardSize.medium,
               ),
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '2',
                 size: AnimeImageCardSize.medium,
               ),
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '3',
                 size: AnimeImageCardSize.medium,
               ),
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '4',
                 size: AnimeImageCardSize.medium,
               ),
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '5',
                 size: AnimeImageCardSize.medium,
               ),
               AnimeImageCard(
+                displayType: DisplayType.ranking,
                 imageUrl:
                     'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
                 rating: '0.0',
-                episodeNumber: '0.0',
+                value: '6',
                 size: AnimeImageCardSize.medium,
               ),
             ],
