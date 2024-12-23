@@ -1,21 +1,27 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 enum AnimeImageCardSize { small, medium, large }
 
+enum DisplayType { ranking, episodeNumber }
+
 class AnimeImageCard extends StatelessWidget {
   final String imageUrl;
   final dynamic rating;
-  final dynamic episodeNumber;
+  final dynamic value;
   final AnimeImageCardSize size;
+  final DisplayType displayType;
 
   const AnimeImageCard({
     super.key,
     this.imageUrl = 'https://cdn.myanimelist.net/images/anime/1441/122795l.jpg',
     this.rating = '0.0',
-    this.episodeNumber = '0.0',
+    this.value = '0.0',
     this.size = AnimeImageCardSize.large,
+    required this.displayType,
   });
 
   @override
@@ -81,15 +87,23 @@ class AnimeImageCard extends StatelessWidget {
           bottom: 0,
           left: 0,
           child: Container(
-            padding: EdgeInsets.fromLTRB(10, 6, 10, 6),
+            // (4, 0, 10, 0) if rating else (10, 6, 10, 6)
+            padding: displayType == DisplayType.ranking
+                ? const EdgeInsets.fromLTRB(4, 0, 10, 0)
+                : const EdgeInsets.fromLTRB(10, 6, 10, 6),
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                episodeNumber, // must be a parameter
-                style: Theme.of(context)
-                    .textTheme
-                    .labelSmall
-                    ?.copyWith(color: Colors.white),
+                value, // must be a parameter
+                style: displayType == DisplayType.episodeNumber
+                    ? Theme.of(context)
+                        .textTheme
+                        .labelSmall
+                        ?.copyWith(color: Colors.white)
+                    : Theme.of(context)
+                        .textTheme
+                        .displayMedium
+                        ?.copyWith(color: Colors.white),
               ),
             ),
           ),
