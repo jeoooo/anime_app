@@ -1,5 +1,4 @@
 // lib/screens/home_screen.dart
-// ignore_for_file: prefer_const_constructors
 
 import 'package:anime_app/theme/app_theme.dart';
 import 'package:anime_app/widgets/hero_widget.dart';
@@ -77,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: _heroHeight,
                   child: _selectedIndex == 0
-                      ? HeroWidget(
+                      ? const HeroWidget(
                           imageUrl:
                               'https://cdn.myanimelist.net/images/anime/1404/98182l.jpg',
                           heroTag: 'hero-image',
@@ -86,11 +85,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 if (_selectedIndex == 0) ...[
                   const SizedBox(height: 20),
-                  AnimeCategories(),
+                  const AnimeCategories(),
                   const SizedBox(height: 20),
-                  AnimeCategories(categoryName: "New Episode Releases"),
+                  const AnimeCategories(),
                   const SizedBox(height: 20),
-                  AnimeCategories(categoryName: "Winter 2024"),
+                  const AnimeCategories(),
+
+                  // const SizedBox(height: 20),
+                  // AnimeCategories(categoryName: "New Episode Releases"),
+                  // const SizedBox(height: 20),
+                  // AnimeCategories(categoryName: "Winter 2024"),
                 ],
               ],
             ),
