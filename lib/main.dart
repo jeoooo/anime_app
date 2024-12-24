@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: AppThemes.defaultTheme,
       home: HomeScreen(), // Set HomeScreen as the main entry point
       routes: {
