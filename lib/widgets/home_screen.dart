@@ -1,4 +1,3 @@
-import 'package:anime_app/theme/app_theme.dart';
 import 'package:anime_app/widgets/hero_widget.dart';
 import 'package:anime_app/widgets/anime_categories.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
