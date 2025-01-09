@@ -1,5 +1,3 @@
-// lib/screens/home_screen.dart
-
 import 'package:anime_app/theme/app_theme.dart';
 import 'package:anime_app/widgets/hero_widget.dart';
 import 'package:anime_app/widgets/anime_categories.dart';
@@ -54,81 +52,106 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppThemes.defaultTheme,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Anime App'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                // Navigate to the search screen
+    return Scaffold(
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 300.0, // Increased height
+            floating: false,
+            pinned: true,
+            flexibleSpace: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                var top = constraints.biggest.height;
+                return FlexibleSpaceBar(
+                  title: AnimatedOpacity(
+                    opacity: top <= kToolbarHeight ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    child: const Text('Anime App'),
+                  ),
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.network(
+                        'https://cdn.myanimelist.net/images/anime/1404/98182l.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned(
+                        bottom: 16.0,
+                        left: 16.0,
+                        child: AnimatedOpacity(
+                          opacity: top > kToolbarHeight ? 1.0 : 0.0,
+                          duration: const Duration(milliseconds: 300),
+                          child: const Text(
+                            'Main Image Text',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               },
             ),
-          ],
-        ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            controller: _scrollController,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  // Navigate to the search screen
+                },
+              ),
+            ],
+          ),
+          SliverToBoxAdapter(
             child: Column(
               children: [
-                SizedBox(
-                  height: _heroHeight,
-                  child: _selectedIndex == 0
-                      ? const HeroWidget(
-                          imageUrl:
-                              'https://cdn.myanimelist.net/images/anime/1404/98182l.jpg',
-                          heroTag: 'hero-image',
-                        )
-                      : _pages[_selectedIndex], // Display selected page
-                ),
                 if (_selectedIndex == 0) ...[
                   const SizedBox(height: 20),
-                  const AnimeCategories(),
+                  AnimeCategories(),
                   const SizedBox(height: 20),
-                  const AnimeCategories(),
+                  AnimeCategories(),
                   const SizedBox(height: 20),
-                  const AnimeCategories(),
-
-                  // const SizedBox(height: 20),
-                  // AnimeCategories(categoryName: "New Episode Releases"),
-                  // const SizedBox(height: 20),
-                  // AnimeCategories(categoryName: "Winter 2024"),
+                  AnimeCategories(),
+                ] else ...[
+                  _pages[_selectedIndex],
                 ],
               ],
             ),
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt),
-              label: 'Catalog',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
-              label: 'My List',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.download),
-              label: 'Download',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          showUnselectedLabels: true,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.grey[600],
-        ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt),
+            label: 'Catalog',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'My List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.download),
+            label: 'Download',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        showUnselectedLabels: true,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.grey[600],
       ),
     );
   }
