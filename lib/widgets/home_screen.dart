@@ -111,11 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 if (_selectedIndex == 0) ...[
                   const SizedBox(height: 20),
-                  AnimeCategories(),
+                  const AnimeCategories(),
                   const SizedBox(height: 20),
-                  AnimeCategories(),
+                  const AnimeCategories(),
                   const SizedBox(height: 20),
-                  AnimeCategories(),
+                  const AnimeCategories(),
                 ] else ...[
                   _pages[_selectedIndex],
                 ],
